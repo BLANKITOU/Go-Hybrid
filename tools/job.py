@@ -218,8 +218,8 @@ def main():
     tier, action = sys.argv[1], sys.argv[2]
     if tier == "kaggle" and action == "submit" and len(sys.argv) == 4:
         kaggle_submit(os.path.abspath(sys.argv[3]))
-    elif tier == "kaggle" and action == "status":
-        kaggle_status(sys.argv[4] if len(sys.argv) > 4 else None)
+    elif tier == "kaggle" and action == "status" and len(sys.argv) in (3, 4):
+        kaggle_status(sys.argv[3] if len(sys.argv) == 4 else None)
     elif tier == "kaggle" and action == "wait" and len(sys.argv) >= 4:
         minutes = float(sys.argv[3])
         sys.exit(kaggle_wait(minutes, sys.argv[4] if len(sys.argv) > 4 else None))
